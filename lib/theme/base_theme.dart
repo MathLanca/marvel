@@ -14,6 +14,7 @@ class BaseTheme {
       error: kErrorColor, // red for errors
       onPrimary: kWhiteTextColor, // white for texts in primary
       onSecondary: kWhiteTextColor, // white for texts in secondary
+      onTertiary: kWhiteTextColor, // white for texts in tertiary
       onSurface: kBlackTextColor, // preto for texts in surface
       onBackground: kWhiteTextColor, // white para textos em cim a de background
       onError: kWhiteTextColor, // white for texts in error
