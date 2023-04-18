@@ -1,4 +1,5 @@
 import 'package:marvel/home/domain/entity/character_list.dart';
+import 'package:marvel/home/domain/usecase/fetch_characters_usecase.dart';
 import 'package:marvel/home/domain/usecase/fetch_random_char_usecase.dart';
 import 'package:mobx/mobx.dart';
 part 'home_controller.g.dart';
@@ -6,26 +7,44 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  final FetchRandomCharactersUseCase _fetchRandomCharactersUseCase;
+  final FetchRandomCharactersUseCase _fetchRandom;
+  final FetchCharactersUseCase _fetchAll;
 
-  _HomeControllerBase(this._fetchRandomCharactersUseCase) {
+  _HomeControllerBase(this._fetchRandom, this._fetchAll) {
     fetchFiveRandomCharacters();
+    fetchCharactersList();
   }
+
+  @observable
+  CharacterList? carouselList;
 
   @observable
   CharacterList? characters;
 
   @observable
-  late bool loading = false;
+  bool loadingCarousel = false;
 
   @observable
+  bool loadingList = false;
+
   @action
   fetchFiveRandomCharacters() async {
-    loading = true;
+    loadingCarousel = true;
 
-    await _fetchRandomCharactersUseCase.execute().then((result) {
-      loading = false;
+    await _fetchRandom.execute().then((result) {
+      loadingCarousel = false;
+      result.fold((error) => print(error), (chars) => carouselList = chars);
+    });
+  }
+
+  @action
+  fetchCharactersList() async {
+    loadingList = true;
+
+    await _fetchAll.execute().then((result) {
+      loadingCarousel = false;
       result.fold((error) => print(error), (chars) => characters = chars);
     });
+
   }
 }

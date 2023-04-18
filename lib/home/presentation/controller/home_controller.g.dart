@@ -9,6 +9,22 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeController on _HomeControllerBase, Store {
+  late final _$carouselListAtom =
+      Atom(name: '_HomeControllerBase.carouselList', context: context);
+
+  @override
+  CharacterList? get carouselList {
+    _$carouselListAtom.reportRead();
+    return super.carouselList;
+  }
+
+  @override
+  set carouselList(CharacterList? value) {
+    _$carouselListAtom.reportWrite(value, super.carouselList, () {
+      super.carouselList = value;
+    });
+  }
+
   late final _$charactersAtom =
       Atom(name: '_HomeControllerBase.characters', context: context);
 
@@ -25,19 +41,35 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  late final _$loadingAtom =
-      Atom(name: '_HomeControllerBase.loading', context: context);
+  late final _$loadingCarouselAtom =
+      Atom(name: '_HomeControllerBase.loadingCarousel', context: context);
 
   @override
-  bool get loading {
-    _$loadingAtom.reportRead();
-    return super.loading;
+  bool get loadingCarousel {
+    _$loadingCarouselAtom.reportRead();
+    return super.loadingCarousel;
   }
 
   @override
-  set loading(bool value) {
-    _$loadingAtom.reportWrite(value, super.loading, () {
-      super.loading = value;
+  set loadingCarousel(bool value) {
+    _$loadingCarouselAtom.reportWrite(value, super.loadingCarousel, () {
+      super.loadingCarousel = value;
+    });
+  }
+
+  late final _$loadingListAtom =
+      Atom(name: '_HomeControllerBase.loadingList', context: context);
+
+  @override
+  bool get loadingList {
+    _$loadingListAtom.reportRead();
+    return super.loadingList;
+  }
+
+  @override
+  set loadingList(bool value) {
+    _$loadingListAtom.reportWrite(value, super.loadingList, () {
+      super.loadingList = value;
     });
   }
 
@@ -46,16 +78,27 @@ mixin _$HomeController on _HomeControllerBase, Store {
       context: context);
 
   @override
-  ObservableFuture fetchFiveRandomCharacters() {
-    return ObservableFuture(_$fetchFiveRandomCharactersAsyncAction
-        .run(() => super.fetchFiveRandomCharacters()));
+  Future fetchFiveRandomCharacters() {
+    return _$fetchFiveRandomCharactersAsyncAction
+        .run(() => super.fetchFiveRandomCharacters());
+  }
+
+  late final _$fetchCharactersListAsyncAction =
+      AsyncAction('_HomeControllerBase.fetchCharactersList', context: context);
+
+  @override
+  Future fetchCharactersList() {
+    return _$fetchCharactersListAsyncAction
+        .run(() => super.fetchCharactersList());
   }
 
   @override
   String toString() {
     return '''
+carouselList: ${carouselList},
 characters: ${characters},
-loading: ${loading}
+loadingCarousel: ${loadingCarousel},
+loadingList: ${loadingList}
     ''';
   }
 }
