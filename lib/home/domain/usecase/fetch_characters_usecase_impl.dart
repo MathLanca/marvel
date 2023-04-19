@@ -9,8 +9,7 @@ class FetchCharactersUseCaseImpl implements FetchCharactersUseCase {
   FetchCharactersUseCaseImpl(this._dataSource);
 
   @override
-  Future<Either<Exception, CharacterList>> execute() {
-    return _dataSource.execute();
+  Future<Either<Exception, CharacterList>> execute({int? lastIndex}) {
+    return _dataSource.execute(lastIndex: lastIndex);
   }
-
 }

@@ -73,6 +73,22 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  late final _$isFetchingMoreAtom =
+      Atom(name: '_HomeControllerBase.isFetchingMore', context: context);
+
+  @override
+  bool get isFetchingMore {
+    _$isFetchingMoreAtom.reportRead();
+    return super.isFetchingMore;
+  }
+
+  @override
+  set isFetchingMore(bool value) {
+    _$isFetchingMoreAtom.reportWrite(value, super.isFetchingMore, () {
+      super.isFetchingMore = value;
+    });
+  }
+
   late final _$fetchFiveRandomCharactersAsyncAction = AsyncAction(
       '_HomeControllerBase.fetchFiveRandomCharacters',
       context: context);
@@ -92,13 +108,37 @@ mixin _$HomeController on _HomeControllerBase, Store {
         .run(() => super.fetchCharactersList());
   }
 
+  late final _$fetchMoreCharactersAsyncAction =
+      AsyncAction('_HomeControllerBase.fetchMoreCharacters', context: context);
+
+  @override
+  Future fetchMoreCharacters({int? lastIndex}) {
+    return _$fetchMoreCharactersAsyncAction
+        .run(() => super.fetchMoreCharacters(lastIndex: lastIndex));
+  }
+
+  late final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase', context: context);
+
+  @override
+  dynamic refreshAll() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.refreshAll');
+    try {
+      return super.refreshAll();
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 carouselList: ${carouselList},
 characters: ${characters},
 loadingCarousel: ${loadingCarousel},
-loadingList: ${loadingList}
+loadingList: ${loadingList},
+isFetchingMore: ${isFetchingMore}
     ''';
   }
 }

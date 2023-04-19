@@ -27,6 +27,9 @@ abstract class _HomeControllerBase with Store {
   @observable
   bool loadingList = false;
 
+  @observable
+  bool isFetchingMore = false;
+
   @action
   fetchFiveRandomCharacters() async {
     loadingCarousel = true;
@@ -42,9 +45,29 @@ abstract class _HomeControllerBase with Store {
     loadingList = true;
 
     await _fetchAll.execute().then((result) {
-      loadingCarousel = false;
+      loadingList = false;
       result.fold((error) => print(error), (chars) => characters = chars);
     });
+  }
 
+  @action
+  fetchMoreCharacters({int? lastIndex}) async {
+    isFetchingMore = true;
+    await _fetchAll.execute(lastIndex: lastIndex).then((result) {
+      result.fold((error) => print(error), (result) {
+        isFetchingMore = false;
+        if (characters?.results != null) {
+          characters?.results!.addAll(result.results?.toList() ?? []);
+          characters = characters;
+          print(characters?.results?.length);
+        }
+      });
+    });
+  }
+
+  @action
+  refreshAll() async {
+    fetchCharactersList();
+    fetchFiveRandomCharacters();
   }
 }

@@ -13,7 +13,7 @@ class FetchCharactersDataSourceImpl implements FetchCharactersDataSource {
   FetchCharactersDataSourceImpl(this._http);
 
   @override
-  Future<Either<Exception, CharacterList>> execute({int? lastLimit}) async {
+  Future<Either<Exception, CharacterList>> execute({int? lastIndex}) async {
     final String? baseUrl = dotenv.env['BASE_URL'];
     final String? apiKey = dotenv.env['API_KEY'];
     final String? apiHash = dotenv.env['API_HASH'];
@@ -29,7 +29,7 @@ class FetchCharactersDataSourceImpl implements FetchCharactersDataSource {
       'ts': 1,
       'apikey': apiKey,
       'hash': apiHash,
-      'offset': lastLimit ?? 0,
+      'offset': lastIndex ?? 0,
     };
 
     try {

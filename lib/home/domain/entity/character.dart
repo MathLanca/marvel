@@ -8,7 +8,7 @@ class Character {
   String name;
   String? description;
   CharacterImage? image;
-  
+
   Character(this.id, this.name, this.description, this.image);
 
   Map<String, dynamic> toMap() {
@@ -23,7 +23,11 @@ class Character {
     return Character(
       map['id'] as int,
       map['name'] as String,
-      map['description'] != null ? map['description'] as String : null,
+      map['description'] == null
+          ? 'No description found'
+          : map['description'] == ""
+              ? 'No description found'
+              : map['description'] as String,
       map['thumbnail'] != null ? CharacterImage.fromMap(map['thumbnail']) : null,
     );
   }
