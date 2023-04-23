@@ -1,12 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:marvel/home/domain/entity/character.dart';
-import 'package:marvel/home/domain/entity/character_image.dart';
-import 'package:marvel/home/domain/entity/character_list.dart';
-import 'package:marvel/home/presentation/components/carousel.dart';
-import 'package:marvel/home/presentation/components/carousel_item.dart';
+import 'package:marvel/domain/entity/character.dart';
+import 'package:marvel/domain/entity/character_image.dart';
+import 'package:marvel/domain/entity/character_list.dart';
+import 'package:marvel/presentation/components/carousel.dart';
+import 'package:marvel/presentation/components/carousel_item.dart';
 
 void main() {
   group('Carousel widget', () {

@@ -484,7 +484,7 @@ packages:
     source: hosted
     version: "2.2.0"
   mockito:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: mockito
       sha256: dd61809f04da1838a680926de50a9e87385c1de91c6579629c3d1723946e8059

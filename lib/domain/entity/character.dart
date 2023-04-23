@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:marvel/home/domain/entity/character_image.dart';
+import 'package:marvel/domain/entity/character_image.dart';
 
 class Character {
   int id;

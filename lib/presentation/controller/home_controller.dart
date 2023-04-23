@@ -1,6 +1,6 @@
-import 'package:marvel/home/domain/entity/character_list.dart';
-import 'package:marvel/home/domain/usecase/fetch_characters_usecase.dart';
-import 'package:marvel/home/domain/usecase/fetch_random_char_usecase.dart';
+import 'package:marvel/domain/entity/character_list.dart';
+import 'package:marvel/domain/usecase/fetch_characters_usecase.dart';
+import 'package:marvel/domain/usecase/fetch_random_char_usecase.dart';
 import 'package:mobx/mobx.dart';
 part 'home_controller.g.dart';
 
