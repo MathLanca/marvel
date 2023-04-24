@@ -4,10 +4,10 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:marvel/constants/strings.dart';
-import 'package:marvel/home/domain/entity/character_list.dart';
+import 'package:marvel/domain/entity/character_list.dart';
 import 'package:marvel/utils/exception/exception_handler.dart';
 import 'package:marvel/utils/exception/exceptions.dart';
-import 'package:marvel/home/domain/datasource/fetch_random_char_datasource.dart';
+import 'package:marvel/domain/datasource/fetch_random_char_datasource.dart';
 
 class FetchRandomCharactersDataSourceImpl implements FetchRandomCharactersDataSource {
   final Dio _http;

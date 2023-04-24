@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class CharacterImage {
+import 'package:equatable/equatable.dart';
+
+class CharacterImage extends Equatable{
   String? imageUrl;
   String? imageType;
 
@@ -30,4 +32,7 @@ class CharacterImage {
   String toJson() => json.encode(toMap());
 
   factory CharacterImage.fromJson(String source) => CharacterImage.fromMap(json.decode(source) as Map<String, dynamic>);
+  
+  @override
+  List<Object?> get props => [imageUrl, imageType];
 }

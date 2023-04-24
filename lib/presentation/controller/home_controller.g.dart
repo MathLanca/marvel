@@ -117,18 +117,12 @@ mixin _$HomeController on _HomeControllerBase, Store {
         .run(() => super.fetchMoreCharacters(lastIndex: lastIndex));
   }
 
-  late final _$_HomeControllerBaseActionController =
-      ActionController(name: '_HomeControllerBase', context: context);
+  late final _$refreshAllAsyncAction =
+      AsyncAction('_HomeControllerBase.refreshAll', context: context);
 
   @override
-  dynamic refreshAll() {
-    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.refreshAll');
-    try {
-      return super.refreshAll();
-    } finally {
-      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future refreshAll() {
+    return _$refreshAllAsyncAction.run(() => super.refreshAll());
   }
 
   @override

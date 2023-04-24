@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:marvel/home/domain/entity/character_image.dart';
+import 'package:equatable/equatable.dart';
+import 'package:marvel/domain/entity/character_image.dart';
 
-class Character {
+class Character extends Equatable{
   int id;
   String name;
   String? description;
@@ -35,4 +36,7 @@ class Character {
   String toJson() => json.encode(toMap());
 
   factory Character.fromJson(String source) => Character.fromMap(json.decode(source) as Map<String, dynamic>);
+  
+  @override
+  List<Object?> get props => [id, name, description, image];
 }

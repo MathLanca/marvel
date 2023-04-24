@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:marvel/home/domain/entity/character.dart';
-import 'package:marvel/home/domain/entity/character_image.dart';
-import 'package:marvel/home/presentation/components/carousel_item.dart';
+import 'package:marvel/domain/entity/character.dart';
+import 'package:marvel/domain/entity/character_image.dart';
+import 'package:marvel/presentation/components/carousel_item.dart';
 
 void main() {
   Future<void> _injectWidget(WidgetTester tester, {required Character character}) async {

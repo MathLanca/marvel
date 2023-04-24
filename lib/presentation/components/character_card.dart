@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:marvel/home/domain/entity/character.dart';
+import 'package:marvel/domain/entity/character.dart';
 
 class CharacterCard extends StatelessWidget {
   final Character? character;
