@@ -9,14 +9,19 @@ import 'package:marvel/utils/exception/exceptions.dart';
 
 class FetchCharactersDataSourceImpl implements FetchCharactersDataSource {
   final Dio _http;
+  late DotEnv _dotEnv;
 
-  FetchCharactersDataSourceImpl(this._http);
+  FetchCharactersDataSourceImpl(this._http, {DotEnv? dotEnv}) {
+    _dotEnv = dotEnv ??= DotEnv();
+  }
 
   @override
   Future<Either<Exception, CharacterList>> execute({int? lastIndex}) async {
-    final String? baseUrl = dotenv.env['BASE_URL'];
-    final String? apiKey = dotenv.env['API_KEY'];
-    final String? apiHash = dotenv.env['API_HASH'];
+    await _dotEnv.load();
+    
+    final String? baseUrl = _dotEnv.env['BASE_URL'];
+    final String? apiKey = _dotEnv.env['API_KEY'];
+    final String? apiHash = _dotEnv.env['API_HASH'];
     const String endPoint = '/v1/public/characters';
 
     if (baseUrl == null || apiKey == null || apiHash == null) {

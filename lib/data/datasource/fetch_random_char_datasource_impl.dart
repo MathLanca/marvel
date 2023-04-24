@@ -11,13 +11,19 @@ import 'package:marvel/domain/datasource/fetch_random_char_datasource.dart';
 
 class FetchRandomCharactersDataSourceImpl implements FetchRandomCharactersDataSource {
   final Dio _http;
-  FetchRandomCharactersDataSourceImpl(this._http);
+  late DotEnv _dotEnv;
+
+  FetchRandomCharactersDataSourceImpl(this._http, {DotEnv? dotEnv}) {
+    _dotEnv = dotEnv ??= DotEnv();
+  }
 
   @override
   Future<Either<Exception, CharacterList>> execute() async {
-    final String? baseUrl = dotenv.env['BASE_URL'];
-    final String? apiKey = dotenv.env['API_KEY'];
-    final String? apiHash = dotenv.env['API_HASH'];
+    await _dotEnv.load();
+    
+    final String? baseUrl = _dotEnv.env['BASE_URL'];
+    final String? apiKey = _dotEnv.env['API_KEY'];
+    final String? apiHash = _dotEnv.env['API_HASH'];
     const String endPoint = '/v1/public/characters';
 
     if (baseUrl == null || apiKey == null || apiHash == null) {

@@ -9,31 +9,6 @@ import 'package:marvel/presentation/controller/home_controller.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-// class MockFetchRandomCharactersUseCase extends Mock implements FetchRandomCharactersUseCase {
-//   @override
-//   Future<Either<Exception, CharacterList>> execute() async {
-//     return Future.value(
-//       Right(CharacterList(
-//         0,
-//         20,
-//         [Character(1, 'Iron Man', '', CharacterImage('', ''))],
-//       )),
-//     );
-//   }
-// }
-
-// class MockFetchCharactersUseCase extends Mock implements FetchCharactersUseCase {
-//   @override
-//   Future<Either<Exception, CharacterList>> execute({int? lastIndex}) async {
-//     return Future.value(
-//       Right(CharacterList(
-//         0,
-//         20,
-//         [Character(1, 'Iron Man', '', CharacterImage('', ''))],
-//       )),
-//     );
-//   }
-// }
 @GenerateNiceMocks([
   MockSpec<FetchRandomCharactersUseCase>(as: #fetchRandom),
   MockSpec<FetchCharactersUseCase>(as: #fetchAll),
