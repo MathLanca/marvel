@@ -27,17 +27,16 @@ The app is built using the Flutter framework and uses MobX as the state manageme
 
 ```
 lib/
-├── home/
-    ├── data/
-    │   ├── datasource/
-    ├── domain/
-    │   ├── entity/
-    │   ├── usecase/
-    │   ├── datasource/
-    └── presentation/
-        ├── components/
-        ├── controller/
-        ├── screens/
+├── data/
+│   ├── datasource/
+├── domain/
+│   ├── entity/
+│   ├── usecase/
+│   ├── datasource/
+└── presentation/
+    ├── components/
+    ├── controller/
+    ├── screens/
 ```
 
 ## License
